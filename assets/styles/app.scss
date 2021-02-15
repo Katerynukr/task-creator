@@ -1,0 +1,154 @@
+@import "~bootstrap/scss/bootstrap";
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import url('https://fonts.googleapis.com/css?family=Cinzel');
+body {
+    // background-image: url('../../images/dodo.png');
+    background-size: cover;
+    font-family:Cinzel;
+    border-radius: 0% !important;
+    font-weight: 600 !important;
+    
+}
+body *{
+    background:transparent;
+}
+h1{
+    text-align: center;
+    font-family:Cinzel;
+    font-weight: bolder;
+}
+a{
+    text-decoration: none;
+}
+/*FOR INDEX TWIG*/
+.order-by,
+.unordered-list{
+    border-radius: 0% !important;
+}
+.li-bck{
+    display: block;
+    padding:10px;
+    border: solid;
+    border-color: transparent;
+    border-radius: 5px;
+}
+.li-bck:hover{
+font-weight: bold;
+border: solid black;
+border-radius: 5px;
+}
+.info-list{
+margin-bottom: 0 !important;
+}
+.navbar,
+.single-element{
+    font-family:Cinzel;
+}
+.single-element-small{
+    font-family:Lemonada;
+    font-size:14px;
+}
+/*CREATE TWIG*/
+.textarea{
+    background-color: white !important;
+}
+.textarea label{
+    background:transparent;
+}
+.text-muted{
+    color: black !important;
+    font-size: 85% !important;
+    font-weight: 500 !important;
+}
+.input-text::placeholder {
+    color: black !important;
+}
+/*BUTTONS*/
+.btn-delete{
+    background-color: mediumspringgreen;
+}
+.btn-delete:hover{
+    background-color: black;
+    color: mediumspringgreen;
+}
+.btn-edit{
+    background-color: #8fda95
+}
+.btn-edit:hover{
+    background-color: black;
+    color: #8fda95
+}
+.btn-add{
+    font-weight: 800;
+}
+.btn-info,
+.btn-add{
+    color: #2bc6f791;
+    background-color: black;
+    border: solid transparent;
+}
+.btn-info:hover,
+.btn-add:hover{
+    background-color: #2bc6f791;
+    color: black;
+    border: solid black;
+}
+.btn-sort,
+.btn-filter {
+    margin-right: 10px  !important;
+    margin-left: 10px !important;
+    background-color: #2bc6f7;
+    border-radius: 5px !important;
+}
+.btn-sort:hover,
+.btn-filter:hover {
+    background-color: black;
+    color: #2bc6f7;
+}
+
+/*OTHER*/
+
+.list-group-item {
+    &__line {
+        display: flex;
+        justify-content: space-between;
+        span {
+            font-size: 24px;
+        }
+        &__buttons {
+            display: flex;
+            .btn {
+                margin: 7px;
+            }
+        }
+    }
+}
+.center-bedge{
+    display: flex;
+    justify-content: center;
+}
+
+.form-check-input.custom {
+    margin-left: 15px;
+}
+
+.form-check.custom {
+    padding-left: 0;
+}
+
+form.sort-form {
+    display: flex;
+    align-content: center;
+    button {
+        height: 38px;
+        margin: 0 10px;
+    }
+}
+.menu-black{
+    background-color: black;
+}
+

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modify Status Data
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<div>
+					<div>
+						<h1>Modify Status Data</h1>
+					</div>
+
+					<div>
+						<form action="{{path('status_update', {id: status.id})}}" method="POST">
+							<div class="form-group">
+								<label>Title:
+								</label>
+								<input type="text" class="form-control" name="status_title" value="{{status.title}}">
+								<small class="form-text text-muted">Status name.</small>
+							</div>
+							<input type="hidden" name="token" value="{{ csrf_token('check_csrf_hidden') }}"/>
+							<button type="submit" class="btn save-btn btn-add btn-block">Edit Status</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

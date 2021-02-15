@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Note List
+{% endblock %}
+
+
+{% block body %}
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<div>
+					<div>
+						<h1>Note List</h1>
+					</div>
+					<div>
+						List order by:
+						<form action="{{ path('note_index')}}" method="GET" class="sort-form">
+							<div class="btn-group order-by">
+								<select name="filter" class="btn btn-outline-dark dropdown-toggle">
+									<option value="0">All</option>
+									{% for status in statuses %}
+										<option value="{{status.id}}" {% if statusID == status.id %} selected {% endif %}>{{status.title}}</option>
+									{% endfor %}
+								</select>
+								<button type="submit" class="btn btn-sort">Firlter IT!</button>
+								<a href="{{ path('note_index')}}" class="btn btn-sort">
+									<i class="fa fa-eraser" aria-hidden="true"></i>
+								</a>
+							</div>
+						</form>
+
+						<ul class="list-group unordered-list ">
+							{% for note in notes %}
+								<li class=" li-bck" style="background:transparent;">
+									<div class="list-group-item__line single-element info-list">
+										<span>
+											<div class="single-element">
+												{{note.title}}
+												{{note.priority}}
+											</div>
+										</span>
+										<div class="list-group-item__line__buttons">
+											<a href="{{ path('note_edit', {id: note.id}) }}" class="btn-edit btn">
+												<i class="fa fa-plus" aria-hidden="true"></i>
+											</a>
+											<form action="{{ path('note_delete', {id: note.id}) }}" method="POST">
+												<input type="hidden" name="token" value="{{ csrf_token('check_csrf_hidden') }}"/>
+												<button type="submit" class="btn-delete btn">
+													<i class="fa fa-trash" aria-hidden="true"></i>
+												</button>
+											</form>
+										</div> 
+									</div>
+									<div class="list-group-item__line single-element">				
+											<div class="single-element list-group-item__line">
+												{{note.note|raw}}
+											</div>
+                                            <div class="single-element list-group-item__line">
+                                            {% for status in statuses %}
+                                            {% if status.id == note.statusId %}
+												{{status.title}}
+                                            {% endif %}
+                                            {% endfor %}
+											</div>
+									</div>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

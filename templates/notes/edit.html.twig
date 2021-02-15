@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modify Note Data
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<div>
+					<div>
+						<h1>Modify Note Data</h1>
+					</div>
+
+					<div>
+                        <form action="{{path('note_update', {id: note.id})}}" method="POST">
+							<div class="form-group">
+								<label>Title:</label>
+								<input type="text" class="form-control" name="note_title" value="{{note.title}}">
+								<small class="form-text text-muted">Note name.</small>
+							</div>
+                            <div class="form-group">
+								<label>Priority:</label>
+								<input type="text" class="form-control" name="note_priority" value="{{note.priority}}">
+								<small class="form-text text-muted">Note priority.</small>
+							</div>
+                            <div class="form-group">
+								<label>Notes:</label>
+                                <textarea name="note_note" id="summernote">{{note.note|raw}}</textarea>
+							</div>
+                            <div class="form-group">
+								<label>Status:</label>
+                                <select name="note_status_id" class="form-control">
+									{% for status in statuses %}
+										<option value="{{status.id}}" {% if  status.id == note.statusId %}selected{% endif %}>{{status.title}}</option>
+									{% endfor %}
+								</select>
+								<small class="form-text text-muted">Statuses available.</small>
+							</div>
+							<input type="hidden" name="token" value="{{ csrf_token('check_csrf_hidden') }}"/>
+							<button type="submit" class="btn btn-dark btn-add save-btn btn-block">Edit new Note</button>
+						</form>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

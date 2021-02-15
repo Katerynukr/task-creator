@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create New Status{% endblock %}
+
+{% block body %}
+
+<div class="container">
+   <div class="row justify-content-center">
+       <div class="col-md-8">
+           <div>
+               <div>
+                    <h1>Create New Status</h1>
+                </div>
+               <div>
+                     <form action="{{path('status_store')}}" method="POST">
+                        <div class="form-group">
+                                <label>Title:</label>
+                                <input type="text" class="form-control input-text" name="status_title" value="{{status_title}}">
+                                <small class="form-text text-muted">Status name.</small>
+                            </div>
+                            <input type="hidden" name="token" value="{{ csrf_token('check_csrf_hidden') }}"/>
+                            <button type="submit" class="save-btn btn btn-add btn-block">Add new status</button>
+                        </div>   
+                    </form>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+ 
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Statuses' List
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row justify-content-center" >
+			<div class="col-md-8">
+				<div>
+					<div>
+					
+						<h1>Statuses' List</h1>
+					</div>
+					<div>
+						List order by:
+						<form action="{{ path('status_index')}}" method="GET" class="sort-form">
+							<div class="btn-group order-by">
+								<select name="sort_by" class="btn btn-outline-dark dropdown-toggle">
+									<option value="default">Default</option>
+									<option value="sort_by_title_asc" {% if sortBy=='sort_by_title_asc' %} selected {% endif %}> title a-z</option>
+									<option value="sort_by_title_desc" {% if sortBy=='sort_by_title_desc' %} selected {% endif %}>title z-a</option>
+								</select>
+								<button type="submit" class="btn btn-sort">Sort IT!</button>
+								<a href="{{ path('status_index')}}" class="btn btn-sort">
+									<i class="fa fa-eraser" aria-hidden="true"></i>
+								</a>
+							</div>
+						</form>
+
+						<ul class="list-group unordered-list bck">
+							{% for status in  statuses %}
+								<li class="bck li-bckbck" style="background:transparent;">
+									<div class="list-group-item__line single-element info-list">
+										<span>
+											{{status.title}}
+										</span>
+										<div class="list-group-item__line__buttons">
+											<a href="{{ path('status_edit', {id: status.id}) }}" class="btn-edit btn">
+												<i class="fa fa-plus" aria-hidden="true"></i>
+											</a>
+											<form action="{{ path('status_delete', {id: status.id}) }}" method="POST"> 
+												<input type="hidden" name="token" value="{{ csrf_token('check_csrf_hidden') }}"/>
+												<button type="submit" class="btn-delete btn">
+													<i class="fa fa-trash" aria-hidden="true"></i>
+												</button>
+											</form> 
+										</div>
+									</div>
+								</li>
+							{% endfor %} 
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+{% endblock %}
+
