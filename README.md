@@ -4,11 +4,6 @@
 | :---: | :---: | 
 | id | int(11)| 
 | title | varcahr(64)| 
-id: int(11)
-title: varchar(255)
-priority: varchar(255)
-note: text
-statuse_id : int(11)
 
 
 | Note| |                            
