@@ -1,4 +1,4 @@
-# The project is a CRUD that can write into database a notes(tasks) that have a status 
+# The project is a CRUD that can write into database notes(tasks) that have a status 
 **The database should have three tables.**
 | Status| |                            
 | :---: | :---: | 
